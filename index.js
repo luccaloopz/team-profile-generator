@@ -1,6 +1,5 @@
 const fs = require('fs');
 const inquirer = require('inquirer');
-const Employee = require('./lib/Employee');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
@@ -122,8 +121,28 @@ function choosingOtherTeamMembers(answers) {
             myTeam.push(intern);
             choosingOtherTeamMembers(answers);
         });
+    } else {
+        console.log(myTeam);
+        return myTeam;
     };
-    console.log(myTeam);
 };
 
-managerQuestions();
+function generateHTML(data) {
+//create a funtion here to write the html file using fs.writeFile 
+    fs.writeFile("./dist/index.html", data, err => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log("Your team has been built!");
+        };
+    });
+};
+
+managerQuestions()
+.then(myteam => {
+    // return back what you get from taking the myTeam array of employee objects and pasing it through the generatehtml.js file to actually dynamically create the html page
+}).then(templateHtml => {
+    // return the template literal of what the newly dynamically generated html page looks like and pass it through the function right above that uses fs.writefile to create the html page.
+}).catch(err => {
+    throw err;
+});
