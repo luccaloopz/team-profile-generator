@@ -124,13 +124,14 @@ function choosingOtherTeamMembers(answers) {
         });
     } else {
         console.log(myTeam);
-        return myTeam;
+        const data = generateMyTeam(myTeam);
+        return generateHTML(data);
     };
 };
 
 function generateHTML(data) {
 //create a funtion here to write the html file using fs.writeFile 
-    fs.writeFile("./dist/index.html", data, err => {
+    fs.writeFile("./dist/generated.html", data, err => {
         if (err) {
             console.log(err);
         } else {
@@ -139,13 +140,4 @@ function generateHTML(data) {
     });
 };
 
-managerQuestions()
-.then(myTeam => {
-    // return back what you get from taking the myTeam array of employee objects and pasing it through the generatehtml.js file to actually dynamically create the html page
-    return generateMyTeam(myTeam);
-}).then(generatedNewHtml => {
-    // return the template literal of what the newly dynamically generated html page looks like and pass it through the function right above that uses fs.writefile to create the html page.
-    return generateHTML(generatedNewHtml);
-}).catch(err => {
-    throw err;
-});
+managerQuestions();  
