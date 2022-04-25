@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
+const generateMyTeam = require('./src/generatehtml')
 
 const questionsManager = [
     {
@@ -139,10 +140,12 @@ function generateHTML(data) {
 };
 
 managerQuestions()
-.then(myteam => {
+.then(myTeam => {
     // return back what you get from taking the myTeam array of employee objects and pasing it through the generatehtml.js file to actually dynamically create the html page
-}).then(templateHtml => {
+    return generateMyTeam(myTeam);
+}).then(generatedNewHtml => {
     // return the template literal of what the newly dynamically generated html page looks like and pass it through the function right above that uses fs.writefile to create the html page.
+    return generateHTML(generatedNewHtml);
 }).catch(err => {
     throw err;
 });

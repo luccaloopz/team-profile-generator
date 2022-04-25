@@ -1,4 +1,4 @@
-function generatehtml() {
+function generatehtml(memberCards) {
     return `
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,9 @@ function generatehtml() {
         <main>
             <div class="container">
                 <div class="row">
-                    <div class="row d-flex justify-content-center"></div>
+                    <div class="row d-flex justify-content-center">
+                        ${memberCards}
+                    </div>
                 </div>
             </div>
         </main>
@@ -38,15 +40,15 @@ function generateManagerCard(manager) {
     return `
 <div class="card bg-light m-4 shadow" style="width: 18rem;">
     <div class="row memberCardHeader rounded">
-        <div class="text-white fs-3">John</div>
+        <div class="text-white fs-3">${manager.name}</div>
         <div class="text-white fs-4">Manager</div>
     </div>
     <div class="card-body rounded">
         <div class="card border">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: </li>
-                <li class="list-group-item">Email: </li>
-                <li class="list-group-item">Office Number: </li>
+                <li class="list-group-item">ID: ${manager.id}</li>
+                <li class="list-group-item">Email: ${manager.email}</li>
+                <li class="list-group-item">Office Number: ${manager.officeNumber}</li>
             </ul>
         </div>
     </div>
@@ -57,15 +59,15 @@ function generateEngineerCard(engineer) {
     return `
 <div class="card bg-light m-4 shadow" style="width: 18rem;">
     <div class="row memberCardHeader rounded">
-        <div class="text-white fs-3">Lucca</div>
+        <div class="text-white fs-3">${engineer.name}</div>
         <div class="text-white fs-4">Engineer</div>
     </div>
     <div class="card-body rounded">
         <div class="card border">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: </li>
-                <li class="list-group-item">Email: </li>
-                <li class="list-group-item">GitHub: </li>
+                <li class="list-group-item">ID: ${engineer.id}</li>
+                <li class="list-group-item">Email: ${engineer.email}</li>
+                <li class="list-group-item">GitHub: ${engineer.gitUser}</li>
             </ul>
         </div>
     </div>
@@ -76,17 +78,41 @@ function generateInternCard(intern) {
     return `
 <div class="card bg-light m-4 shadow" style="width: 18rem;">
     <div class="row memberCardHeader rounded">
-        <div class="text-white fs-3">Amner</div>
+        <div class="text-white fs-3">${intern.name}</div>
         <div class="text-white fs-4">Intern</div>
     </div>
     <div class="card-body rounded">
         <div class="card border">
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: </li>
-                <li class="list-group-item">Email: </li>
-                <li class="list-group-item">School: </li>
+                <li class="list-group-item">ID: ${intern.id}</li>
+                <li class="list-group-item">Email: ${intern.email}</li>
+                <li class="list-group-item">School: ${intern.school}</li>
             </ul>
         </div>
     </div>
 </div>`;
 };
+
+function createTeamMemberCards(myTeam) {
+    // this function will take the myTeam array and loop through it to create the various team member cards, append them to the generatehtml() function as one template literal and return that final template literal
+
+    teamArray = [];
+
+    for(let i = 0; i < myTeam.length; i++) {
+        const role = myTeam[i].getRole();
+
+        if (role === "Manager") {
+            teamArray.push(generateManagerCard(myTeam[i]))
+        } else if (role === "Engineer") {
+            teamArray.push(generateEngineerCard(myTeam[i]))
+        } else if (role === "Intern") {
+            teamArray.push(generateInternCard(myTeam[i]))
+        };
+    };
+
+    const memberCards = teamArray.join('');
+    const generatedTeam = generatehtml(memberCards);
+    return generatedTeam;
+};
+
+module.exports = createTeamMemberCards;
