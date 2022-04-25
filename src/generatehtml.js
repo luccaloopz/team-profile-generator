@@ -20,7 +20,11 @@ function generatehtml() {
         </header>
 
         <main>
-
+            <div class="container">
+                <div class="row">
+                    <div class="row d-flex justify-content-center"></div>
+                </div>
+            </div>
         </main>
         
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -30,3 +34,59 @@ function generatehtml() {
 
 };
 
+function generateManagerCard(manager) {
+    return `
+<div class="card bg-light m-4 shadow" style="width: 18rem;">
+    <div class="row memberCardHeader rounded">
+        <div class="text-white fs-3">John</div>
+        <div class="text-white fs-4">Manager</div>
+    </div>
+    <div class="card-body rounded">
+        <div class="card border">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: </li>
+                <li class="list-group-item">Email: </li>
+                <li class="list-group-item">Office Number: </li>
+            </ul>
+        </div>
+    </div>
+</div>`;
+};
+
+function generateEngineerCard(engineer) {
+    return `
+<div class="card bg-light m-4 shadow" style="width: 18rem;">
+    <div class="row memberCardHeader rounded">
+        <div class="text-white fs-3">Lucca</div>
+        <div class="text-white fs-4">Engineer</div>
+    </div>
+    <div class="card-body rounded">
+        <div class="card border">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: </li>
+                <li class="list-group-item">Email: </li>
+                <li class="list-group-item">GitHub: </li>
+            </ul>
+        </div>
+    </div>
+</div>`;
+};
+
+function generateInternCard(intern) {
+    return `
+<div class="card bg-light m-4 shadow" style="width: 18rem;">
+    <div class="row memberCardHeader rounded">
+        <div class="text-white fs-3">Amner</div>
+        <div class="text-white fs-4">Intern</div>
+    </div>
+    <div class="card-body rounded">
+        <div class="card border">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">ID: </li>
+                <li class="list-group-item">Email: </li>
+                <li class="list-group-item">School: </li>
+            </ul>
+        </div>
+    </div>
+</div>`;
+};

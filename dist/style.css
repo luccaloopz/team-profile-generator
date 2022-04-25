@@ -10,3 +10,7 @@ header {
 h1 {
     color: aliceblue;
 }
+
+.memberCardHeader {
+    background-color: rgb(108, 108, 146);
+}
