@@ -1,4 +1,4 @@
-# team-profile-generator
+# Team Profile Generator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -28,12 +28,14 @@ node index.js
 
 ## **Usage**
 The following is a link to a video walkthrough of the application: 
-[![Video Walkthrough](./assets/)]( "Video Walkthrough")
+[![Video Walkthrough](./assets/Untitled_%20Apr%2025%2C%202022%208_50%20PM.webm)](https://drive.google.com/file/d/1tl3x4yoLBbCZ5rOr5lYmCYEpPZsL1tXX/view "Video Walkthrough")
 
 ## **Application**
 
 Below is a screenshot of what the final product looks like:
-![screenshot](./)
+
+![screenshot](./assets/application-final-product.PNG "Final Product")
+
 
 Below is a snippet of the function that generated the HTML file. This function will take the myTeam array of team member objects, loop through this array to create the various team member Bootstrap cards, and return a template literal of the final html code.
 
